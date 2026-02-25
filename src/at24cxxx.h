@@ -36,17 +36,17 @@ class AT24Cxxx {
     void setWire(TwoWire& theWire);
     void setWire(TwoWire *theWire);
 
-    uint8_t read(int idx);
-    void write(int idx, uint8_t val);
-    void update(int idx, uint8_t val);
-    uint16_t length(void);
-    int writeBuffer(uint16_t address, const uint8_t *data, size_t len);
-    int readBuffer(uint16_t address, uint8_t *data, size_t len);
-
     /**
      * Returns result from the last performed operation.
      */
     uint8_t getLastError(void);
+
+    uint16_t length(void);
+    int readBuffer(uint16_t address, uint8_t *data, size_t len);
+    int writeBuffer(uint16_t address, const uint8_t *data, size_t len);
+    uint8_t read(int idx);
+    void write(int idx, uint8_t val);
+    void update(int idx, uint8_t val);
 
     template< typename T > T &get(int idx, T &t) {
       readBuffer(idx, (uint8_t*)&t, sizeof(T));

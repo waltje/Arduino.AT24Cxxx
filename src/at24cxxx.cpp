@@ -164,6 +164,13 @@ AT24Cxxx::getLastError(void)
 }
 
 
+uint16_t
+AT24Cxxx::length(void)
+{
+  return _size;
+}
+
+
 uint8_t
 AT24Cxxx::read(int idx)
 {
@@ -189,11 +196,4 @@ AT24Cxxx::update(int idx, uint8_t val)
 {
   if (val != read(idx))
     write(idx, val);
-}
-
-
-uint16_t
-AT24Cxxx::length(void)
-{
-  return _size;
 }
