@@ -1,8 +1,8 @@
-
 #ifndef AT24CXXX_H
-#define AT24CXXX_H
+# define AT24CXXX_H
 
-#include "Wire.h"
+# include <Wire.h>
+
 
 #define AT24C_ADDRESS_0 (0x50)
 #define AT24C_ADDRESS_1 (0x51)
@@ -13,8 +13,8 @@
 #define AT24C_ADDRESS_6 (0x56)
 #define AT24C_ADDRESS_7 (0x57)
 
-class AT24Cxxx {
 
+class AT24Cxxx {
   public:
     AT24Cxxx(uint8_t address, TwoWire& i2c, int writeDelay, uint16_t size, uint8_t pageSize);
     uint8_t read( int idx );
@@ -23,8 +23,9 @@ class AT24Cxxx {
     uint16_t length();
     int writeBuffer(uint16_t address, const uint8_t* data, size_t len);
     int readBuffer(uint16_t address, uint8_t* data, size_t len);
-    /** 
-     * Returns result from the last performed operation. 
+
+    /**
+     * Returns result from the last performed operation.
      * The meaning of the values are:
      *  0 .. success
      *  1 .. length to long for buffer
@@ -48,7 +49,7 @@ class AT24Cxxx {
     virtual void writeAddress(uint16_t address);
     uint8_t i2cAddress;
     TwoWire* twoWire;
-    
+
   private:
     int rawWriteBuffer(uint16_t address, const uint8_t* data, size_t len);
     int size;
@@ -57,4 +58,5 @@ class AT24Cxxx {
     uint8_t pageSize;
 };
 
-#endif
+
+#endif  /*AT24CXXX_H*/
